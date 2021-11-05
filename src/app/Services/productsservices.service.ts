@@ -8,34 +8,35 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class Productsservices {
-  private API_URL= environment.ApiUrl;
-  cartcount:number
+  private API_URL = environment.ApiUrl;
+  Product: any[] = [] // store product details
   private edit = new BehaviorSubject([]);
-  cart = this.edit.asObservable();
+  cart = this.edit.asObservable(); 
   constructor(
-private http:HttpClient
-  ) { 
-    
+    private http: HttpClient
+  ) {
+
   }
 
   apiUrl(apiMethods: string): string {
-    return this.API_URL+apiMethods;
+    return this.API_URL + apiMethods;
   }
+
   cartDetails(data: any) {
-    debugger
     this.edit.next(data)
   }
+
   getProductList(): Observable<any> {
     const apiUrl = 'Product'
     return this.http.get<any>(apiUrl);
   }
-
-  orderProduct(product:any):Observable<any>{
-    const apiUrl='OrderProducts'
-    return this.http.post<any>(apiUrl,product)
+  
+  orderProduct(product: any): Observable<any> {
+    const apiUrl = 'OrderProducts'
+    return this.http.post<any>(apiUrl, product)
   }
-  addProduct(productdetails:any):Observable<any>{
-    const apiUrl='Product'
-    return this.http.post<any>(apiUrl,productdetails)
+  addProduct(productdetails: any): Observable<any> {
+    const apiUrl = 'Product'
+    return this.http.post<any>(apiUrl, productdetails)
   }
 }

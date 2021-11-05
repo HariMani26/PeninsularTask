@@ -11,7 +11,7 @@ export class AddproductsComponent implements OnInit {
   orderForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private form: FormBuilder,
     private service: Productsservices
   ) { }
 
@@ -20,14 +20,14 @@ export class AddproductsComponent implements OnInit {
     this.initFormGroup()
   }
   initFormGroup() {
-    this.orderForm = this.fb.group({
-      productvalues: this.fb.array([this.initQuesForm()]),
+    this.orderForm = this.form.group({
+      productvalues: this.form.array([this.initQuesForm()]),
     });
   }
   initQuesForm(): FormGroup {
-    return this.fb.group({
-      producatName: new FormControl('', Validators.required),
-      productQunity: new FormControl(null, Validators.required),
+    return this.form.group({
+      productName: new FormControl('', Validators.required),
+      availableQuantity: new FormControl(null,Validators.required),
 
     });
   }
@@ -36,28 +36,40 @@ export class AddproductsComponent implements OnInit {
   }
   addControl(i: any) {
     if (this.orderForm.get('productvalues')?.valid) {
-      const productname = this.orderForm.get('productvalues') as FormArray;
-      productname.push(this.initQuesForm());
+      const productnames = this.orderForm.get('productvalues') as FormArray;
+      productnames.push(this.initQuesForm()); // add formcontrol
     } else {
       this.orderForm.get('productvalues')?.markAllAsTouched();
     }
   }
+  //Remove 
   removeControl(i: any) {
     const removeQuetion = this.orderForm.get('productvalues') as FormArray;
-    removeQuetion.removeAt(i);
+    removeQuetion.removeAt(i); // remove formcontrol
   }
 
 
   //Add Product
   saveProduct() {
-
     if (this.orderForm.get('productvalues')?.valid) {
       if (this.orderForm.value.productvalues.length > 0) {
         for (let i = 0; i < this.orderForm.value.productvalues.length; i++) {
-          this.service.addProduct(this.orderForm.value.productvalues[i]).subscribe(ren => {
+        this.orderForm.value.productvalues[i].availableQuantity=parseInt(this.orderForm.value.productvalues[i].availableQuantity) // convert string int
+        this.service.addProduct(this.orderForm.value.productvalues[i]).subscribe(ren => {
+            if(ren===true){
+              alert("Product Added")
+              this.orderForm.get('productvalues')?.reset()
+              this.initFormGroup()
+            }
+            else{
+              (error:any)=>{
+              alert(error);
+            
+            }
+            }
             console.log(ren)
           })
-          console.log(this.orderForm.value.productvalues)
+         
         }
       }
     }

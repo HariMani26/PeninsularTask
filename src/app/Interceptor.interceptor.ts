@@ -20,14 +20,14 @@ export class Interceptor implements HttpInterceptor {
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    const apiService: Productsservices= this.injector.get(Productsservices);
     
+    const apiService: Productsservices= this.injector.get(Productsservices);
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Accept', 'application/json');
 
     const Url: string = apiService.apiUrl(request.url);
+    
     request = request.clone({
         url: Url,
         headers
@@ -49,7 +49,6 @@ export class Interceptor implements HttpInterceptor {
 
     }
     return event;
-  
   }),
 
   error=> {
