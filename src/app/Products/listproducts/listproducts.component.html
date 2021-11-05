@@ -1,0 +1,82 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Grocery Store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+
+</head>
+	
+<body>
+<!-- header -->
+	<div class="logo_products">
+		<div class="container">
+			<div >
+				<button routerLink="/productadd" mat-flat-button color="primary" >Add Product</button>	
+
+				</div>
+		
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- script-for sticky-nav -->
+
+<!-- //script-for sticky-nav -->
+
+<!-- //header -->
+<!-- banner -->
+	
+<!-- top-brands -->
+	<div class="top-brands">
+		<div class="container">
+			<h3>Products</h3>
+			<div class="agile_top_brands_grids">
+				<div class="col-md-3 top_brand_left" *ngFor="let product of productdetails;let i=index">
+					<div class="hover14 column">
+						<div class="agile_top_brand_left_grid">
+							<!-- <div class="tag"><img src="./assets/img/Bike.png" alt=" " class="img-responsive" /></div> -->
+							<div class="agile_top_brand_left_grid1">
+							
+									<div class="snipcart-item block" >
+										<div class="snipcart-thumb">
+											<a href=""><img title=" " alt=" " src="./assets/img/2.png" /></a>		
+											<p>{{product.productName}}</p>
+											<div >
+												<button class="btn" mat-flat-button color="primary" routerLink="/productadd"  (click)="addCart(product.productName,product.productId)">Add Cart</button>
+
+															<!-- <input type="submit" name="submit" value="Add to cart" class="button" /> -->
+													
+															
+												
+											
+												</div>
+										</div>
+										
+									</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //top-brands -->
+<!-- fresh-vegetables -->
+	
+<!-- //fresh-vegetables -->
+<!-- newsletter -->
+	
+<!-- //newsletter -->
+<!-- footer -->
+
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+</body>
+</html>

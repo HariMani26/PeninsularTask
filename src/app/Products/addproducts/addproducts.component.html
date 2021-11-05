@@ -1,0 +1,66 @@
+<div fxLayout="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutGap="0px"
+    fxLayoutGap.sm="0px" fxLayoutAlign="center start">
+    <div fxFlex="40%" fxFlex.lg="40%" fxFlex.md="40%" fxHide.sm fxHide.xs>
+       
+        <div class="CandSide">
+           
+            <form class="form-class"  [formGroup]="orderForm">
+                <mat-card-header>
+                    <mat-card-title>
+                      <h1 class="header-title">Add Product</h1>
+                    </mat-card-title>
+                  </mat-card-header>
+                <div formArrayName="productvalues"
+                    *ngFor="let item of getformgroup(); let i = index; let first = first; let last= last">
+                    <div fxLayout="row" [formGroupName]="i">
+                        <div fxFlex="100%">
+                            <div class="form-controls" fxLayout="row wrap" fxLayout.lg="row" fxLayout.md="row"
+                                fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px grid"
+                                fxLayoutGap.sm="0px grid" fxLayoutGap.xs="0px grid">
+                                <div fxFlex="33.33%" fxFlex.lg="33.33%" fxFlex.md="33.33%" fxFlex.sm="100%"
+                                    fxFlex.xs="100%">
+                                   
+                                    <mat-form-field appearance="outline" fxFlex="97.5%">
+                                        <mat-label>Product Name</mat-label>
+                                        <input formControlName="producatName" required matInput
+                                            placeholder="Product Name" autocomplete="off" role="presentation" />
+                                        <mat-error *ngIf="item.get('producatName')?.errors?.required"> product name is
+                                            required
+                                        </mat-error>
+
+                                    </mat-form-field>
+                                    <mat-form-field class="input-boxs" appearance="outline" fxFlex="100%">
+                                        <mat-label>Product Quantity</mat-label>
+                                        <input formControlName="productQunity" autocomplete="off" matInput
+                                            placeholder="Product Quantity" required />
+                                        <mat-error *ngIf="item.get('productQunity')?.errors?.required"> product quantity
+                                            is
+                                            required
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <span>
+                                    <button class="add" (click)="addControl(i)" *ngIf="last" mat-fab color="primary"
+                                    aria-label="Example icon button with a delete icon">
+                                    <mat-icon>+</mat-icon>
+                                </button>
+                                    <button class="remove" (click)="removeControl(i)" *ngIf="!(first && last)" mat-fab
+                                        color="primary" aria-label="Example icon button with a delete icon">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div><button mat-flat-button color="primary" (click)="saveProduct()">Save</button></div>
+                
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+.button {
+    font-size: 14px;
+    color: #fff;
+    background: #FA1818;
+    text-decoration: none;
+    position: relative;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 0.5em 0;
+    outline: none;
+    height: 35px;
+}
+

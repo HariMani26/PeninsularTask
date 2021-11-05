@@ -1,0 +1,44 @@
+<body>
+<div class="privacy about">
+<h3>Chec<span>kout</span></h3>
+
+<div class="checkout-right">
+        <h4>Your shopping cart contains: <span>{{checkout.length}} Products</span></h4>
+    <table class="timetable_sub">
+        <thead>
+            <tr>
+                <th>SL No.</th>	
+                <th>Product</th>
+                <th>Product Name</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr class="rem1" *ngFor="let chekouts of checkout;let i=index">
+            <td class="invert">{{i+1}}</td>
+            <td class="invert-image"><a href=""><img src="./assets/img/2.png" alt=" " class="img-responsive"></a></td>
+            <td class="invert">{{chekouts.productName}}</td>
+            <td class="invert">
+                <div class="rem">
+                    <div class="close1" (click)="removeCart(i)"> </div>
+                </div>
+
+            </td>
+        </tr>
+    
+        
+
+    </tbody></table>
+</div>
+<div class="checkout-left">	
+    <div class="col-md-4 checkout-left-basket">
+        <button class="submit check_out" (click)="orderProduct()">Order</button>
+    </div>
+    
+
+    <div class="clearfix"> </div>
+    
+</div>
+
+</div>
+</body>

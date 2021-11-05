@@ -1,0 +1,14 @@
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.add{
+    background-color: #00FF00 !important;
+
+}
+.remove{
+    background-color:  #f44336!important;
+    margin-left: 3px !important;
+}
+.btn{
+    width: 100%;
+}
