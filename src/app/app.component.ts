@@ -6,7 +6,7 @@ import { Productsservices } from './Services/productsservices.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PeninsularTask';
+ // title = 'PeninsularTask';
   cartCount:number
   constructor(
    private service:Productsservices
